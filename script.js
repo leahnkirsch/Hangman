@@ -76,42 +76,42 @@ function handleGuess(){
     document.getElementById("showGuessedLetters").innerHTML = guessedLetters;
     document.getElementById("guessesLeft").innerHTML = numGuesses;
     document.getElementById("LetterGuess").value = "";
-    document.getElementById("image").innerHTML = "<img src= 'img/" + numGuess.toString() + ".png'>";
+    document.getElementById("image").innerHTML = "<img src= 'images/" + getImage + ".png'>";
 }
 
-//
-// function getImage() {
-//     if (numGuesses === 10) {
-//         return "one";
-//     }
-//     if (numGuesses === 9) {
-//         return "two";
-//     }
-//     if (numGuesses === 8) {
-//         return "three";
-//     }
-//     if (numGuesses === 7) {
-//         return "four";
-//     }
-//     if (numGuesses === 6) {
-//         return "five";
-//     }
-//     if (numGuesses === 5) {
-//         return "six";
-//     }
-//     if (numGuesses === 4) {
-//         return "seven";
-//     }
-//     if (numGuesses === 3) {
-//         return "eight";
-//     }
-//     if (numGuesses === 2) {
-//         return "nine";
-//     }
-//     if (numGuesses === 1) {
-//         return "ten";
-//     }
-// }
+
+function getImage() {
+    if (numGuesses === 10) {
+        return "one";
+    }
+    if (numGuesses === 9) {
+        return "two";
+    }
+    if (numGuesses === 8) {
+        return "three";
+    }
+    if (numGuesses === 7) {
+        return "four";
+    }
+    if (numGuesses === 6) {
+        return "five";
+    }
+    if (numGuesses === 5) {
+        return "six";
+    }
+    if (numGuesses === 4) {
+        return "seven";
+    }
+    if (numGuesses === 3) {
+        return "eight";
+    }
+    if (numGuesses === 2) {
+        return "nine";
+    }
+    if (numGuesses === 1) {
+        return "ten";
+    }
+}
 
 
 
