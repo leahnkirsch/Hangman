@@ -3,19 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <script src="script.js"></script>
-    <link rel="style.css" href="style.css"/>
-</head> 
+    <link rel="stylesheet" href="style.css"/></head>
 <body>
+
+<header>
+    <h1>Hangman</h1>
+</header>
 <div id="error"></div>
+<h4>Select your level!</h4>
+<select class= "center" id="level">
+    <option value="1">Easy</option>
+    <option value="2">Medium</option>
+    <option value="3">Hard</option>
+</select>
+
+<h4> Start your game!</h4>
+<button onclick="startGame()" >Start game</button>
+<br>
+<br>
 My Guess: <input type="text" id="LetterGuess" value = "" size = "10">
-
-
-<button onclick="startGame()">Start Game!</button>
+<br>
+<br>
 <button onclick="handleGuess()">Guess Letter!</button>
+<br>
 <div id="print"></div>
+<br>
 Letters Guessed: <div id="showGuessedLetters"></div>
+<br>
 Guesses Left: <div id="guessesLeft"></div>
+<br>
 
+<button name= again onclick="reset()" >Play again</button>
 
 
 
