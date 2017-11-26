@@ -5,7 +5,8 @@ var mediumWords = ["babpipes", "hooligan", "cricket", "hippo", "elevator", "junk
 var hardWords = ["espionage", "galvanize", "zigzagging", "grogginess", "haphazard", "jiujitsu", "beekeeper", "pneumonia", "supercalifragilisticexpialidocious", "antidisestablishmentarianism"];
 var numGuesses = 10;
 var guessedLetters = [];
-
+var letter = "";
+var alph= ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
 function startGame(){
     document.getElementById("error").innerHTML = "";
@@ -27,23 +28,30 @@ function startGame(){
 function printWord(){
     var result = "";
     for (var i = 0; i < word.length; i++){
-        if(guessedLetters.indexOf(word[i])!=-1){
+        if(guessedLetters.indexOf(word[i]) > -1){
             result += word[i];
         } else {
             result += " _";
         }
     }
-    if (result.indexOf("_") === -1){
-        return "You win! You guessed the word: " + word;
+    if(word.indexOf(letter) == -1){
+        numGuesses -= 1;
     }
     document.getElementById("print").innerHTML = result;
+    if(result.indexOf("_") == -1){
+        console.log("you win");
+        document.getElementById("print").innerHTML = "You win! The word was: " + word;
+    }
+    if (numGuesses === 0) {
+        document.getElementById("print").innerHTML = "GAME OVER! Your word was: " + word;
+    }
 }
 
 function handleGuess(){
     // makes sure you don't guess a letter before starting a game
-    var letter = document.getElementById("LetterGuess").value;
+    letter = document.getElementById("LetterGuess").value.toLowerCase();
     if (word.length === 0){
-        document.getElementById("error").innerHTML = "Error: Start a game before you enter your guess.";
+        document.getElementById("error").innerHTML = "ERROR! Start a game before you enter your guess.";
         document.getElementById("guess").value = "";
         return;
     }
@@ -59,23 +67,60 @@ function handleGuess(){
         document.getElementById("error").innerHTML = "ERROR! Please only enter one letter per guess.";
         return;
     }
+    // makes sure it's not a number
+    if (alph.indexOf(letter)== -1){
+        document.getElementById("error").innerHTML = "ERROR! Please try again and enter only one letter. No numbers!"
+    }
     guessedLetters.push(letter);
-    numGuesses -= 1;
     printWord();
     document.getElementById("showGuessedLetters").innerHTML = guessedLetters;
     document.getElementById("guessesLeft").innerHTML = numGuesses;
     document.getElementById("LetterGuess").value = "";
-    if (numGuesses === 0) {
-        document.getElementById("numGuesses").innerHTML = "";
-        document.getElementById("guessedLetters").innerHTML = "";
-        document.getElementById("print").innerHTML = "GAME OVER! Your word was: " + word;
-    }
-
+    document.getElementById("image").innerHTML = "<img src= 'img/" + numGuess.toString() + ".png'>";
 }
 
-function reset(){
+//
+// function getImage() {
+//     if (numGuesses === 10) {
+//         return "one";
+//     }
+//     if (numGuesses === 9) {
+//         return "two";
+//     }
+//     if (numGuesses === 8) {
+//         return "three";
+//     }
+//     if (numGuesses === 7) {
+//         return "four";
+//     }
+//     if (numGuesses === 6) {
+//         return "five";
+//     }
+//     if (numGuesses === 5) {
+//         return "six";
+//     }
+//     if (numGuesses === 4) {
+//         return "seven";
+//     }
+//     if (numGuesses === 3) {
+//         return "eight";
+//     }
+//     if (numGuesses === 2) {
+//         return "nine";
+//     }
+//     if (numGuesses === 1) {
+//         return "ten";
+//     }
+// }
 
+
+
+
+function reset(){
+    guessedLetters = [];
     numGuesses = 10;
+    document.getElementById("guessesLeft").innerHTML = "";
+    document.getElementById("showGuessedLetters").innerHTML = "";
     document.getElementById("LetterGuess").value = "";
     document.getElementById("print").innerHTML = "";
     document.getElementById("level").value = 1;
