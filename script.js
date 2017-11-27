@@ -10,6 +10,7 @@ var alph= ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','
 
 function startGame(){
     document.getElementById("error").innerHTML = "";
+    document.getElementById("image").innerHTML = "<img src= img/one.png>";
     var strLevel = document.getElementById("level").value;
     var level = parseInt(strLevel);
     if (level === 1){
@@ -76,7 +77,7 @@ function handleGuess(){
     document.getElementById("showGuessedLetters").innerHTML = guessedLetters;
     document.getElementById("guessesLeft").innerHTML = numGuesses;
     document.getElementById("LetterGuess").value = "";
-    document.getElementById("image").innerHTML = "<img src= 'images/" + getImage + ".png'>";
+    document.getElementById("image").innerHTML = "<img src= 'img/" + getImage() + ".png'>";
 }
 
 
