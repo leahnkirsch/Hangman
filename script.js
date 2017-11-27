@@ -44,12 +44,13 @@ function printWord(){
         document.getElementById("print").innerHTML = "You win! The word was: " + word;
     }
     if (numGuesses === 0) {
-        document.getElementById("print").innerHTML = "GAME OVER! Your word was: " + word;
+        document.getElementById("print").innerHTML = "GAME OVER! Your word was: " + word + ". If you want to play again, click the play again button!";
     }
 }
 
 function handleGuess(){
     // makes sure you don't guess a letter before starting a game
+    document.getElementById("error").innerHTML="";
     letter = document.getElementById("LetterGuess").value.toLowerCase();
     if (word.length === 0){
         document.getElementById("error").innerHTML = "ERROR! Start a game before you enter your guess.";
@@ -111,6 +112,9 @@ function getImage() {
     }
     if (numGuesses === 1) {
         return "ten";
+    }
+    if (numGuesses === 0) {
+        return "eleven";
     }
 }
 
